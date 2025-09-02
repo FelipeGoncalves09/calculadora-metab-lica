@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora TMB</title>
+   
+<style>
+    
+    /*corpo do site*/
+
+ body {
+        text-align: center;
+        font-family: 'Segoe UI';
+        background-color: #282828;
+        color: #000000;
+}
+
+/*container da calculadora*/
+
+    .container{
+        background-color: rgb(239, 239, 239);
+        max-width: 800px;
+        height: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+    #naf{
+        font: 18px arial;
+}
+
+/*botao calcular*/
+
+    .calc{
+        font: 18px arial;
+        padding: 15px;
+        border-radius: 15px;
+        border-color:rgba(255, 0, 128, 0.234);
+        background-color: rgba(255, 0, 128, 0.666);
+        color: rgb(255, 255, 255);
+        font-family: 'Segoe UI';
+}
+
+    .botao{
+        width: 100px;
+        height: 50px;
+        font-size: 25px;
+        text-align: center;
+        border-radius: 15px;
+        border: 2px solid rgba(255, 0, 128, 0.234);
+        background-color: rgba(255, 255, 255, 0.666);
+        color: rgb(0, 0, 0);    
+}
+
+/*Área da seleção*/
+
+    .seleçao{
+        width:500px;
+        height: 40px;
+        font-size: 25px;          
+}
+        
+/*Àrea do resultado*/
+
+    #resultado {
+        font: 18px arial;
+        padding: 30px;
+        border-radius: 15px;
+        border: 2px solid rgba(255, 0, 128, 0.234);
+        background-color: rgba(255, 255, 255, 0.666);
+        color: rgb(31, 31, 31);
+        font-family: 'Segoe UI';
+        width: fit-content;
+        margin: 50px auto; 
+        text-align: center;
+        font-family: Arial;   
+}
+
+
+    .container2{
+        color: rgb(224, 224, 224);
+        font-family: Arial, Helvetica, sans-serif;
+        width: 900px;
+        text-align: center;
+        height: 500px;
+        
+}
+
+/*Titulo inicial*/
+
+    .inicioh1{
+        font-size: 40px;
+        color: rgb(255, 108, 181) ;
+}
+
+/*Parágrafo inicial*/
+
+    .inicioP{
+        color: rgb(180, 180, 180);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 170%;
+        max-height: 20px;
+        padding: 30px;
+
+}
+
+/*Informacões, etc*/
+    .info{
+        text-align:left;
+        font-size: 130%;
+        color: rgb(180, 180, 180);
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 90px;
+        max-width: 1350px;
+        
+}
+
+/*Títulos*/
+
+    .tutotitle{
+        color: white;
+}
+
+/*Destaca palavras cercadas por STRONG em rosa*/
+
+    .destaque{
+        color:rgb(255, 128, 191)
+}
+
+/*Destaca outras com branco*/
+    .destaque2{
+        color: rgb(238, 238, 238);
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+    <h1 class="inicioh1">Calculadora <br><strong class="destaque2">Taxa Metabólica Basal</strong>
+    </h1>
+    <p class="inicioP">Calcule seu <strong class="destaque">gasto calórico diário</strong> com base no peso, altura, idade e nível de atividade física. Ideal para ajustar sua alimentação e treinos.
+    </p>
+    
+<hr>
+
+<div class="container">
+    <h1>Preencha Suas Informações Abaixo:</h1>
+    <br> <strong>Peso (kg):</strong>
+    <input class="botao" type="number" name="peso" id="peso"> <strong>Altura:</strong>
+    <input class="botao" type="number" name="altura" id="altura"><strong>Idade:</strong>
+    <input class="botao" type="number" name="idade" id="idade">
+    <h1>Nivel de atividade Fisica:</h1>
+<select class="seleçao" name="naf" id="naf">
+        <option value="1.2">Sedentário</option>
+        <option value="1.375">levemente ativo (1-3 dias na semana)</option>
+        <option value="1.55">moderadamente ativo (3-5 dias na semana)</option>
+        <option value="1.725">muito ativo (6-7 dias na semana)</option>
+        <option value="1.9">extremamente ativo (exercicio pesado/trabalho fisico)</option>
+        <br><br>
+</select>
+
+    <button class="calc" onclick="CalcTmb()">Calcular</button>
+    
+<p id="resultado"></p>
+  
+</div>
+
+<div class="info">
+
+<hr>
+
+    <h1 class="tutotitle">
+        Como usar a calculadora:
+    </h1>
+    <ol>
+        <li>No campo <strong class="destaque">"Peso"</strong>, digite seu peso atual em quilogramas (ex: 70).</li>
+        <li>No campo <strong class="destaque"> "Altura"</strong>, insira sua altura em centímetros (ex: 175).</li>
+        <li>No campo <strong class="destaque"> "Idade"</strong>, coloque sua idade em anos completos (ex: 25).</li>
+        <li>No menu <strong class="destaque">"Nível de atividade física"</strong>, selecione a opção que melhor representa sua rotina:</li>
+        <li><strong class="destaque">Sedentário</strong>: sem exercícios.</li>       
+        <li><strong class="destaque">Levemente ativo</strong>: 1 a 3 dias por semana.</li>
+        <li><strong class="destaque">Moderadamente ativo</strong>: 3 a 5 dias por semana.</li>
+        <li><strong class="destaque">Muito ativo</strong>: 6 a 7 dias por semana.</li>
+        <li><strong class="destaque">Extremamente ativo</strong>: exercícios intensos ou trabalho físico.</li>
+        <li><strong class="destaque">Clique no botão "Calcular"</strong> logo abaixo.</li>
+        <li><strong class="destaque">O resultado com seu Gasto Energético Total (GET</strong>) aparecerá logo abaixo do botão.</li>
+    </ol>
+    <hr>
+
+    <h1 class="tutotitle">Como usar o Resultado:</h1>
+    <p>Após preencher todos os dados e clicar em <strong class="destaque">"Calcular"</strong>, você verá o seu <strong class="destaque">Gasto Energético Total</strong> (GET) — que é a quantidade de calorias que seu corpo precisa diariamente para manter suas funções vitais e suas atividades físicas, sem perder nem ganhar peso.
+    Esse valor é muito importante, pois serve como base para qualquer objetivo físico, seja <strong class="destaque">emagrecer</strong>, <strong class="destaque">ganhar massa muscular</strong> ou apenas <strong class="destaque">manter o corpo saudável e estável</strong>.
+    </p>
+<hr>
+    <h1 class="tutotitle">🔥 Se o seu objetivo é emagrecer:</h1>
+    <p>
+        Você precisa consumir menos calorias do que o seu corpo gasta, ou seja, criar um <strong class="destaque">déficit calórico</strong>. Isso faz com que o organismo busque energia nas reservas de gordura, promovendo a perda de peso de forma saudável.
+    <ol>
+        <li>O recomendado é reduzir entre <strong class="destaque">300</strong> a <strong class="destaque">500</strong> calorias por dia com base no seu <strong class="destaque">GET</strong>.</li>
+        <li>Por exemplo: Se seu resultado for 2.400Kcal, o ideal seria consumir algo entre 1.900 e 2.100Kcal por dia.</li>
+        <li>Evite dietas extremas com cortes muito grandes, pois podem causar perda de massa muscular e afetar sua saúde.</li>
+<li>Aliar esse déficit a uma rotina de exercícios físicos acelera o processo e melhora o condicionamento físico.</li>
+</ol>
+</p>
+<hr>
+<h1 class="tutotitle">🏋️‍♂️ Se o seu objetivo é ganhar massa muscular:</h1>
+<p>Neste caso, o ideal é consumir <strong class="destaque">mais calorias do que o seu corpo gasta</strong>, criando um <strong class="destaque">superávit calórico</strong>. Isso dá ao corpo energia suficiente para construir músculos e se recuperar dos treinos.
+    Aumente sua ingestão em torno de 300 a 500 calorias por dia acima do seu GET.
+    Por exemplo: Se o cálculo mostrar 2.400Kcal, você pode consumir entre 2.700 e 2.900Kcal por dia.
+    Dê prioridade a alimentos ricos em proteínas, carboidratos complexos e gorduras boas.
+    Combine essa alimentação com treinos de força bem estruturados.
+</p>
+<hr>
+<h1 class="tutotitle">
+    ⚖️ Se o seu objetivo é manter o peso:
+</h1>
+    Se você já está satisfeito com seu corpo e quer apenas <strong class="destaque">manter o que conquistou</strong>, basta consumir uma quantidade de calorias <strong class="destaque">igual</strong> ou bem <strong class="destaque">próxima</strong> ao seu GET.
+    Isso ajuda a manter o equilíbrio do seu corpo sem grandes alterações.
+    Continue com uma alimentação balanceada e atividades físicas regulares.
+    Mantenha o foco em alimentos naturais, boas fontes de <strong class="destaque">proteína</strong>, <strong class="destaque">fibras</strong>, e mantenha-se bem <strong class="destaque">hidratado</strong>.
+</div>
+
+
+<script>
+    
+    let DadosUsuario = {}
+/* calculo TMB*/
+    function CalcTmb () {
+    const peso = parseFloat(document.getElementById("peso").value)
+    const altura = parseFloat(document.getElementById("altura").value)
+    const idade = parseFloat(document.getElementById("idade").value)
+
+    const tmb = 10 * peso + 6.25 * altura - 5 * idade + 5
+/*calculo NAF*/
+    const naf = parseFloat(document.getElementById("naf").value)
+
+/*calculo Gasto energetico total (GET)*/
+
+    const get =  tmb * naf
+
+    DadosUsuario = {
+        peso: peso,
+        altura: altura,
+        idade: idade,
+        tmb: tmb,
+        naf: naf,
+        /*demais valores*/
+
+    
+
+    }
+    document.getElementById("resultado").innerText = `Gasto energético total: ${get.toFixed(2)}Kcal` 
+}
+
+    
+    
+
+    </script>
+</body>
+</html>
+
+
